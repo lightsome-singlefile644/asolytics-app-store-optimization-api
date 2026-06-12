@@ -1,0 +1,6 @@
+interface:
+  display_name: "Asolytics Public API"
+  short_description: "ASO data and keyword research via Asolytics API"
+  default_prompt: "Use $asolytics-api to pull ASO data from the Asolytics Public API for research, reporting, or automation."
+policy:
+  allow_implicit_invocation: true
