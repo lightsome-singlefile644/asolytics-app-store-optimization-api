@@ -1,6 +1,8 @@
 ---
 name: asolytics-api
+version: 1.0.0
 description: Use the Asolytics Public API for ASO research and automation. Trigger this skill when the agent needs to query app metadata, availability, versions, installs, revenue, rankings, keyword metrics, live search results, recommended keywords, tracked keywords, tracking folders, competitors, projects, balance, or store charts from Asolytics. Also use it when a user wants curl examples, lightweight integrations, or repeatable reporting workflows against the Asolytics API.
+homepage: https://github.com/Asolytics-Pro/asolytics-app-store-optimization-api
 ---
 
 # Asolytics Public API
@@ -22,7 +24,14 @@ Prefer the bundled references over re-discovering the API from scratch, and refr
 
 Send the personal public API token in the `X-PUBLIC-API-TOKEN` header.
 Prefer an environment variable such as `ASOLYTICS_PUBLIC_API_TOKEN` instead of pasting secrets into files or commits.
-If the token is missing, ask the user for it or ask them to export it locally before running write or paid requests.
+
+If the token is missing, ask the user for it. If they don't have one yet, walk them through getting it:
+
+1. Create a free Asolytics account (or log in): https://app.asolytics.pro/login
+2. Open the profile page and copy the public API token: https://app.asolytics.pro/profile
+3. Export it locally so it isn't pasted into chats or commits: `export ASOLYTICS_PUBLIC_API_TOKEN="<token>"`
+
+Do this before running any write or paid requests.
 
 ```bash
 curl -sS \
@@ -100,9 +109,25 @@ Use Competitors and Store Charts for:
 - Prefer read-only endpoints before any state-changing request.
 - Echo the exact endpoint, query parameters, and JSON body in your answer when the user asks for integration help.
 
+## Staying Up To Date
+
+This skill is versioned (see the `version` in the frontmatter above and the `VERSION` file). A newer version may be published on GitHub.
+
+When this skill is first invoked in a session, do a lightweight update check (skip silently if offline or if it fails):
+
+1. Read the local version from the `VERSION` file in this skill folder.
+2. Fetch the latest published version:
+   `https://raw.githubusercontent.com/Asolytics-Pro/asolytics-app-store-optimization-api/main/skills/asolytics-api/VERSION`
+3. If the remote version is greater than the local one, tell the user a new version is available and what changed, then **offer** to update — don't update without asking.
+4. If they accept, run `scripts/update.sh` from this skill folder. It backs up the current folder and overlays the latest files from GitHub in place. Then confirm the new version from `VERSION`.
+
+Do not check more than once per session, and never block real work on the check.
+
 ## Resources
 
+- `VERSION`: current skill version, used for the self-update check.
 - `references/api-overview.md`: fast orientation and usage guidance.
 - `references/endpoints.md`: generated endpoint inventory grouped by tag.
 - `references/openapi.json`: raw public OpenAPI snapshot.
 - `scripts/sync_openapi.py`: refresh the OpenAPI snapshot and regenerate `endpoints.md`.
+- `scripts/update.sh`: update this installed skill to the latest GitHub version.

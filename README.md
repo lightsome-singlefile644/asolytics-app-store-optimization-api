@@ -28,42 +28,67 @@ Full endpoint-by-endpoint reference: [`skills/asolytics-api/references/endpoints
 
 ## Before you start
 
-1. **An Asolytics account.** Sign up at [asolytics.pro](https://asolytics.pro/).
-2. **A Public API token.** Get it from your Asolytics account and find the docs at [the API documentation page](https://app.asolytics.pro/api/public-api/documentation). You'll pass this token to every request — the skill explains how. Keep it secret (don't paste it into chats or commit it to git).
-3. **An AI agent that supports skills** — e.g. [Claude Code](https://claude.com/claude-code) or [OpenAI Codex](https://developers.openai.com/codex/). A "skill" is just a folder the agent reads to learn how to do something.
+You need a free Asolytics account and your personal API token:
+
+1. **Register a free account** (or log in): **https://app.asolytics.pro/login**
+2. **Open your profile and copy the API token:** **https://app.asolytics.pro/profile**
+3. **Keep the token secret** — don't paste it into chats or commit it to git. The skill will ask you for it when needed (or you can set it once as the `ASOLYTICS_PUBLIC_API_TOKEN` environment variable).
+
+You'll also need **an AI agent that supports skills** — e.g. [Claude Code](https://claude.com/claude-code) or [OpenAI Codex](https://developers.openai.com/codex/). A "skill" is just a folder the agent reads to learn how to do something.
 
 ## Install
 
-A skill is a folder named `asolytics-api/` that lives inside your agent's `skills/` directory. Installing = copying that folder into the right place. Pick your agent below and paste the command into your terminal.
+A skill is a folder named `asolytics-api/` that lives inside your agent's `skills/` directory. Installing = putting that folder in the right place.
 
-> First, download this repo (click the green **Code → Download ZIP** button on GitHub and unzip it, or run `git clone https://github.com/Asolytics-Pro/asolytics-app-store-optimization-api.git`), then `cd` into the folder before running a command below.
+### Option A — Just ask your agent (easiest)
 
-### Claude Code / Claude Desktop
+If you use Claude Code, Codex, or a similar agent, paste this prompt to it and let it do the work:
+
+> **Install the Asolytics ASO skill for me.** Clone `https://github.com/Asolytics-Pro/asolytics-app-store-optimization-api` and copy its `skills/asolytics-api` folder into my agent's skills directory (`~/.claude/skills/` for Claude Code, `~/.codex/skills/` for Codex). Create the directory if it doesn't exist, then confirm it's installed.
+
+The agent will run the right commands for your setup. No terminal knowledge required.
+
+### Option B — Copy it yourself (terminal)
+
+First get the files: click the green **Code → Download ZIP** on GitHub and unzip it, **or** run:
 
 ```bash
-mkdir -p ~/.claude/skills
-cp -R skills/asolytics-api ~/.claude/skills/
+git clone https://github.com/Asolytics-Pro/asolytics-app-store-optimization-api.git
+cd asolytics-app-store-optimization-api
 ```
 
-### OpenAI Codex
+Then copy the skill folder for your agent:
 
 ```bash
-mkdir -p ~/.codex/skills
-cp -R skills/asolytics-api ~/.codex/skills/
+# Claude Code / Claude Desktop
+mkdir -p ~/.claude/skills && cp -R skills/asolytics-api ~/.claude/skills/
+
+# OpenAI Codex
+mkdir -p ~/.codex/skills && cp -R skills/asolytics-api ~/.codex/skills/
 ```
 
-### Any other agent
+For any other agent, copy the `skills/asolytics-api/` folder into that agent's skills directory (most agents use the same `skills/<name>/` layout).
 
-Copy the `skills/asolytics-api/` folder into that agent's skills directory (most agents use the same `skills/<name>/` layout).
+### After installing
 
-**That's it.** Restart your agent if it was already running, then ask it something like:
+Restart your agent if it was already running, then ask it something like:
 > *"Use the asolytics-api skill to show the top-50 live search results for 'photo editor' in the US App Store."*
 
 The first time, the agent will ask for your API token — paste it (or set it as the `ASOLYTICS_PUBLIC_API_TOKEN` environment variable so you only do it once).
 
-## Keeping the reference up to date
+## Updating the skill
 
-The Asolytics API is in alpha and can change. To refresh the bundled API snapshot at any time:
+The skill is versioned. When a newer version is published here on GitHub, the skill itself will **notice and offer to update** the next time you use it — just say yes. Under the hood it runs `scripts/update.sh`, which backs up your current copy and installs the latest files.
+
+You can also update manually any time:
+
+```bash
+bash ~/.claude/skills/asolytics-api/scripts/update.sh   # or ~/.codex/skills/...
+```
+
+## Keeping the API reference fresh
+
+The Asolytics API is in alpha and can change. To refresh the bundled API snapshot (endpoint list & schemas) at any time:
 
 ```bash
 python3 skills/asolytics-api/scripts/sync_openapi.py
