@@ -38,15 +38,6 @@ You need a free Asolytics account and your personal API token:
 
 A skill is a folder named `asolytics-api/` that lives inside your agent's `skills/` directory. Installing = putting that folder in the right place.
 
-### Global vs. project-local
-
-You can install the skill in two places:
-
-- **Global** — available in every project. Lives in your home folder: `~/.claude/skills/` (Claude Code) or `~/.codex/skills/` (Codex).
-- **Project-local** — only this repo/project, and shareable with your team via git. Lives in the project root: `.claude/skills/` (Claude Code) or `.codex/skills/` (Codex).
-
-Pick global if it's just for you across everything; pick project-local to scope it to one project or commit it for teammates.
-
 ### Option A — Just ask your agent (easiest)
 
 If you use Claude Code, Codex, or a similar agent, paste this prompt to it and let it do the work:
