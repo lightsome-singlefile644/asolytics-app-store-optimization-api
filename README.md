@@ -1,12 +1,11 @@
 # Asolytics API — App Store Optimization (ASO) Agent Skill
 
-An agent skill for the **[Asolytics](https://asolytics.pro/) Public API** — the App Store Optimization (ASO) API for App Store and Google Play keyword research, app rankings, keyword metrics, competitor analysis, installs & revenue estimates, and store charts.
+An agent skill for the **[Asolytics](https://asolytics.pro/) Public API** - the App Store Optimization (ASO) API for App Store and Google Play keyword research, app rankings, keyword metrics, competitor analysis, installs & revenue estimates, and store charts.
 
 This skill teaches an AI coding agent (Claude Code, OpenAI Codex, or any agent that loads `skills/` folders) how to use the Asolytics ASO API correctly — authentication, available endpoints, token-cost awareness, and ready-to-run examples — so you can just ask in plain language: *"pull the latest popularity for these keywords"* and the agent does it.
 
-🔗 **Asolytics:** https://asolytics.pro/ · **API docs:** https://app.asolytics.pro/api/public-api/documentation
+**API docs:** https://app.asolytics.pro/api/public-api/documentation
 
-> **Keywords:** Asolytics API · App Store Optimization API · ASO API · ASO keyword research · app rankings · App Store & Google Play analytics · AI agent skill.
 
 ## What you can get from the API
 
@@ -32,7 +31,7 @@ You need a free Asolytics account and your personal API token:
 
 1. **Register a free account** (or log in): **https://app.asolytics.pro/login**
 2. **Open your profile and copy the API token:** **https://app.asolytics.pro/profile**
-3. **Keep the token secret** — don't paste it into chats or commit it to git. The skill will ask you for it when needed (or you can set it once as the `ASOLYTICS_PUBLIC_API_TOKEN` environment variable).
+3. The skill will ask you for it when needed (or you can set it once as the `ASOLYTICS_PUBLIC_API_TOKEN` environment variable).
 
 You'll also need **an AI agent that supports skills** — e.g. [Claude Code](https://claude.com/claude-code) or [OpenAI Codex](https://developers.openai.com/codex/). A "skill" is just a folder the agent reads to learn how to do something.
 
@@ -132,3 +131,5 @@ It re-downloads the latest spec and regenerates `references/openapi.json` and `r
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+> **Keywords:** Asolytics API · App Store Optimization API · ASO API · ASO keyword research · App rankings API · App Store & Google Play Top Charts 
