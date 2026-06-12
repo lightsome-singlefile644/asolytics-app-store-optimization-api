@@ -3,23 +3,60 @@
 from __future__ import annotations
 
 import json
+import sys
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.request import urlopen
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
 
 
 DOCS_URL = "https://app.asolytics.pro/api/public-api/documentation"
 OPENAPI_URL = "https://app.asolytics.pro/api/public-api/docs?public-api-docs.json"
+USER_AGENT = "asolytics-api-skill/sync_openapi (+https://github.com/Asolytics-Pro/asolytics-app-store-optimization-api)"
+TIMEOUT = 30
 ROOT = Path(__file__).resolve().parents[1]
 REF_DIR = ROOT / "references"
 OPENAPI_PATH = REF_DIR / "openapi.json"
 ENDPOINTS_PATH = REF_DIR / "endpoints.md"
 
 
+class SyncError(Exception):
+    """A user-facing failure with a clear, actionable message."""
+
+
 def fetch_spec() -> dict:
-    with urlopen(OPENAPI_URL, timeout=30) as response:
-        return json.load(response)
+    request = Request(OPENAPI_URL, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
+    try:
+        with urlopen(request, timeout=TIMEOUT) as response:
+            status = getattr(response, "status", 200)
+            if status != 200:
+                raise SyncError(f"OpenAPI URL returned HTTP {status}. The spec endpoint may have moved.")
+            raw = response.read()
+    except HTTPError as exc:
+        raise SyncError(
+            f"OpenAPI URL returned HTTP {exc.code} ({exc.reason}). "
+            "The spec endpoint may have moved, or access is now restricted (e.g. Cloudflare).\n"
+            f"  URL: {OPENAPI_URL}"
+        ) from exc
+    except URLError as exc:
+        raise SyncError(
+            f"Could not reach the OpenAPI URL ({exc.reason}). Check your connection or the URL.\n"
+            f"  URL: {OPENAPI_URL}"
+        ) from exc
+    except TimeoutError as exc:
+        raise SyncError(f"Timed out after {TIMEOUT}s fetching the OpenAPI spec.\n  URL: {OPENAPI_URL}") from exc
+
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError as exc:
+        preview = raw[:200].decode("utf-8", "replace").strip()
+        raise SyncError(
+            "The OpenAPI URL did not return valid JSON (it may now serve an HTML page, "
+            "a login wall, or a Cloudflare challenge).\n"
+            f"  URL: {OPENAPI_URL}\n"
+            f"  First bytes: {preview!r}"
+        ) from exc
 
 
 def format_schema(schema: dict) -> str:
@@ -117,7 +154,16 @@ def build_markdown(spec: dict) -> str:
 
 def main() -> None:
     REF_DIR.mkdir(parents=True, exist_ok=True)
-    spec = fetch_spec()
+    try:
+        spec = fetch_spec()
+    except SyncError as exc:
+        print(f"sync_openapi: {exc}", file=sys.stderr)
+        raise SystemExit(1)
+
+    if not spec.get("paths"):
+        print("sync_openapi: the spec has no `paths` — refusing to overwrite the references.", file=sys.stderr)
+        raise SystemExit(1)
+
     OPENAPI_PATH.write_text(json.dumps(spec, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     ENDPOINTS_PATH.write_text(build_markdown(spec), encoding="utf-8")
     print(f"Wrote {OPENAPI_PATH}")

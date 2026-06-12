@@ -3,7 +3,7 @@
 - Source docs: `https://app.asolytics.pro/api/public-api/documentation`
 - Source OpenAPI: `https://app.asolytics.pro/api/public-api/docs?public-api-docs.json`
 - Generated from spec version: `1.0.0-alpha`
-- Generated at: `2026-06-12T14:13:53.767406+00:00`
+- Generated at: `2026-06-12T15:44:35.307158+00:00`
 
 ## Authentication
 

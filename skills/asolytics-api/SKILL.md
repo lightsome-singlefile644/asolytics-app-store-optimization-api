@@ -1,6 +1,6 @@
 ---
 name: asolytics-api
-version: 1.0.0
+version: 1.0.1
 description: Use the Asolytics Public API for ASO research and automation. Trigger this skill when the agent needs to query app metadata, availability, versions, installs, revenue, rankings, keyword metrics, live search results, recommended keywords, tracked keywords, tracking folders, competitors, projects, balance, or store charts from Asolytics. Also use it when a user wants curl examples, lightweight integrations, or repeatable reporting workflows against the Asolytics API.
 homepage: https://github.com/Asolytics-Pro/asolytics-app-store-optimization-api
 ---
