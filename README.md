@@ -53,8 +53,10 @@ Pick global if it's just for you across everything; pick project-local to scope 
 
 If you use Claude Code, Codex, or a similar agent, paste this prompt to it and let it do the work:
 
-```bash
-**Install the Asolytics ASO skill for me.** First ask me whether I want a **global** install (in my home skills folder, available in every project) or a **project-local** install (in this project's skills folder, scoped to this repo). Then clone `https://github.com/Asolytics-Pro/asolytics-app-store-optimization-api` and copy its `skills/asolytics-api` folder into the matching directory: global → `~/.claude/skills/` (Claude Code) or `~/.codex/skills/` (Codex); project-local → `./.claude/skills/` (Claude Code) or `./.codex/skills/` (Codex). Create the directory if it doesn't exist, then confirm where it's installed.
+```markdown
+**Install the Asolytics ASO skill for me.** First ask whether to install it **globally** (in my home skills folder, available in every project) or a **project-local** level (in this project's skills folder, scoped to this repo).
+Then clone `https://github.com/Asolytics-Pro/asolytics-app-store-optimization-api` and copy its `skills/asolytics-api` folder into the matching directory: global → `~/.claude/skills/` (Claude Code) or `~/.codex/skills/` (Codex); project-local → `./.claude/skills/` (Claude Code) or `./.codex/skills/` (Codex).
+Create the directory if it doesn't exist, then confirm where it's installed.
 ```
 
 The agent will ask which option you want and run the right commands. No terminal knowledge required.
