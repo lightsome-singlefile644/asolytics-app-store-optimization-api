@@ -2,12 +2,10 @@
 
 An agent skill for the **[Asolytics](https://asolytics.pro/) Public API** - the App Store Optimization (ASO) API for App Store and Google Play keyword research, app rankings, keyword metrics, competitor analysis, installs & revenue estimates, and store charts.
 
-This skill teaches an AI coding agent (Claude Code, OpenAI Codex, or any agent that loads `skills/` folders) how to use the Asolytics ASO API correctly — authentication, available endpoints, token-cost awareness, and ready-to-run examples — so you can just ask in plain language: *"pull the latest popularity for these keywords"* and the agent does it.
-
 **API docs:** https://app.asolytics.pro/api/public-api/documentation
 
 
-## What you can get from the API
+## What you can get
 
 ASO research and reporting data for any app on the App Store and Google Play:
 
