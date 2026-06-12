@@ -33,7 +33,6 @@ You need a free Asolytics account and your personal API token:
 2. **Open your profile and copy the API token:** **https://app.asolytics.pro/profile**
 3. The skill will ask you for it when needed (or you can set it once as the `ASOLYTICS_PUBLIC_API_TOKEN` environment variable).
 
-You'll also need **an AI agent that supports skills** — e.g. [Claude Code](https://claude.com/claude-code) or [OpenAI Codex](https://developers.openai.com/codex/). A "skill" is just a folder the agent reads to learn how to do something.
 
 ## 2️⃣ Install
 
