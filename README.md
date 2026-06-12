@@ -57,13 +57,7 @@ The [Skills CLI](https://github.com/vercel-labs/skills) installs this skill into
 ```bash
 # Interactive — it picks up your agent and asks global vs project:
 npx skills add https://github.com/Asolytics-Pro/asolytics-app-store-optimization-api --skill asolytics-api
-
-# Or target an agent (-a) and install globally (-g):
-npx skills add https://github.com/Asolytics-Pro/asolytics-app-store-optimization-api --skill asolytics-api -a codex -g
-npx skills add https://github.com/Asolytics-Pro/asolytics-app-store-optimization-api --skill asolytics-api -a claude-code
 ```
-
-By default it symlinks to a single canonical copy, so updates are easy (the CLI also has `npx skills list`, `remove`, and `use`). Add `--copy` if your system doesn't support symlinks.
 
 ### Option C — Claude Code plugin (one-line install + auto-updates)
 
