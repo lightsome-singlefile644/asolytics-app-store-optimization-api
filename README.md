@@ -50,7 +50,33 @@ Create the directory if it doesn't exist, then confirm where it's installed.
 
 The agent will ask which option you want and run the right commands. No terminal knowledge required.
 
-### Option B — Copy it yourself (terminal)
+### Option B — `npx skills` (recommended — works with any agent)
+
+The [Skills CLI](https://github.com/vercel-labs/skills) installs this skill into any supported agent — Claude Code, Codex, Cursor, OpenCode, and 60+ more. It asks which agent and scope, or you pass flags:
+
+```bash
+# Interactive — it picks up your agent and asks global vs project:
+npx skills add https://github.com/Asolytics-Pro/asolytics-app-store-optimization-api --skill asolytics-api
+
+# Or target an agent (-a) and install globally (-g):
+npx skills add https://github.com/Asolytics-Pro/asolytics-app-store-optimization-api --skill asolytics-api -a codex -g
+npx skills add https://github.com/Asolytics-Pro/asolytics-app-store-optimization-api --skill asolytics-api -a claude-code
+```
+
+By default it symlinks to a single canonical copy, so updates are easy (the CLI also has `npx skills list`, `remove`, and `use`). Add `--copy` if your system doesn't support symlinks.
+
+### Option C — Claude Code plugin (one-line install + auto-updates)
+
+This repo is also a Claude Code plugin marketplace, so Claude Code users can install it without copying files. In Claude Code, run:
+
+```text
+/plugin marketplace add Asolytics-Pro/asolytics-app-store-optimization-api
+/plugin install asolytics-api@asolytics
+```
+
+Installed this way, the plugin updates through Claude Code's plugin system (run `/plugin` to manage it).
+
+### Option D — Copy it yourself (terminal)
 
 First get the files: click the green **Code → Download ZIP** on GitHub and unzip it, **or** run:
 
@@ -76,17 +102,6 @@ mkdir -p .codex/skills && cp -R skills/asolytics-api .codex/skills/
 ```
 
 For any other agent, copy the `skills/asolytics-api/` folder into that agent's global or project skills directory (most agents use the same `skills/<name>/` layout).
-
-### Option C — Claude Code plugin (one-line install + auto-updates)
-
-This repo is also a Claude Code plugin marketplace, so Claude Code users can install it without copying files. In Claude Code, run:
-
-```text
-/plugin marketplace add Asolytics-Pro/asolytics-app-store-optimization-api
-/plugin install asolytics-api@asolytics
-```
-
-Installed this way, the plugin updates through Claude Code's plugin system (run `/plugin` to manage it).
 
 ### After installing
 
