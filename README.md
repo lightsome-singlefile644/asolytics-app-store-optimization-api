@@ -26,7 +26,7 @@ ASO research and reporting data for any app on the App Store and Google Play:
 
 Full endpoint-by-endpoint reference: [`skills/asolytics-api/references/endpoints.md`](skills/asolytics-api/references/endpoints.md).
 
-## Before you start
+1️⃣ ## Before you start
 
 You need a free Asolytics account and your personal API token:
 
@@ -36,7 +36,7 @@ You need a free Asolytics account and your personal API token:
 
 You'll also need **an AI agent that supports skills** — e.g. [Claude Code](https://claude.com/claude-code) or [OpenAI Codex](https://developers.openai.com/codex/). A "skill" is just a folder the agent reads to learn how to do something.
 
-## Install
+2️⃣ ## Install
 
 A skill is a folder named `asolytics-api/` that lives inside your agent's `skills/` directory. Installing = putting that folder in the right place.
 
@@ -87,7 +87,7 @@ For any other agent, copy the `skills/asolytics-api/` folder into that agent's g
 ### After installing
 
 Restart your agent if it was already running, then ask it something like:
-> *"Use the asolytics-api skill to show the top-50 live search results for 'photo editor' in the US App Store."*
+> *"Use the Asolytics api skill to show the top-50 live search results for 'photo editor' in the US App Store."*
 
 The first time, the agent will ask for your API token — paste it (or set it as the `ASOLYTICS_PUBLIC_API_TOKEN` environment variable so you only do it once).
 
