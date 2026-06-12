@@ -88,6 +88,17 @@ mkdir -p .codex/skills && cp -R skills/asolytics-api .codex/skills/
 
 For any other agent, copy the `skills/asolytics-api/` folder into that agent's global or project skills directory (most agents use the same `skills/<name>/` layout).
 
+### Option C — Claude Code plugin (one-line install + auto-updates)
+
+This repo is also a Claude Code plugin marketplace, so Claude Code users can install it without copying files. In Claude Code, run:
+
+```text
+/plugin marketplace add Asolytics-Pro/asolytics-app-store-optimization-api
+/plugin install asolytics-api@asolytics
+```
+
+Installed this way, the plugin updates through Claude Code's plugin system (run `/plugin` to manage it).
+
 ### After installing
 
 Restart your agent if it was already running, then ask it something like:
