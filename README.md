@@ -7,19 +7,20 @@ An agent skill for the **[Asolytics](https://asolytics.pro/) Public API** - the 
 
 ## What you can get
 
-ASO research and reporting data for any app on the App Store and Google Play:
+This is mainly an **ASO research & intelligence API** — pull keyword and app data for **any app** on the App Store and Google Play, not just your own:
 
 | Area | What you get |
 | --- | --- |
-| **Keyword research** | Latest keyword metrics (popularity, results, etc.), popularity history over time, and ranking history for your keywords. |
-| **Live search** | The real top-50 search results for any keyword, country, and store — right now. |
-| **Recommended keywords** | Keyword ideas Asolytics suggests for an app, with accept/decline workflow. |
-| **App intelligence** | Current store listing text (title, subtitle, description), screenshots & media, version history, and which countries an app is live in. |
-| **Estimates** | Monthly **estimated installs** and **revenue** history per app, per country. |
-| **Rankings & charts** | An app's category/keyword ranking history, plus full **top-500 store charts** by country, category, and device. |
-| **Competitors** | List competitors for an app, and mark / unmark competitors. |
-| **Keyword tracking** | List, add, and remove tracked keywords; organize them into folders. |
-| **Account** | Your projects and your remaining API **token balance** (the API is metered). |
+| **Keyword metrics** | Popularity (search volume), results count, and other metrics for any keyword — plus **popularity history** over time and an app's **ranking history** for a keyword. |
+| **Live search results** | The real **top-50 search results** for any keyword, country, and store — fetched live, right now. |
+| **Keyword ideas** | Recommended keywords Asolytics suggests for an app. |
+| **App metadata** | Current store listing for any app — title, subtitle, description, screenshots & media, version history, and the countries it's available in. |
+| **Installs & revenue estimates** | Monthly **estimated installs** and **revenue**, per app and per country. |
+| **Rankings & store charts** | An app's category and keyword **ranking history**, plus full **top-500 store charts** by country, category, and device. |
+| **Competitors** | The competitor set for any app. |
+| **Lookups** | Reference data to build valid queries: countries, locales, devices, categories, and clusters. |
+
+It can also **manage your own Asolytics workspace** in one place — your projects, tracked keywords & folders, competitor marks, and your remaining API **token balance** (the API is metered).
 
 Full endpoint-by-endpoint reference: [`skills/asolytics-api/references/endpoints.md`](skills/asolytics-api/references/endpoints.md).
 
