@@ -40,13 +40,22 @@ You'll also need **an AI agent that supports skills** — e.g. [Claude Code](htt
 
 A skill is a folder named `asolytics-api/` that lives inside your agent's `skills/` directory. Installing = putting that folder in the right place.
 
+### Global vs. project-local
+
+You can install the skill in two places:
+
+- **Global** — available in every project. Lives in your home folder: `~/.claude/skills/` (Claude Code) or `~/.codex/skills/` (Codex).
+- **Project-local** — only this repo/project, and shareable with your team via git. Lives in the project root: `.claude/skills/` (Claude Code) or `.codex/skills/` (Codex).
+
+Pick global if it's just for you across everything; pick project-local to scope it to one project or commit it for teammates.
+
 ### Option A — Just ask your agent (easiest)
 
 If you use Claude Code, Codex, or a similar agent, paste this prompt to it and let it do the work:
 
-> **Install the Asolytics ASO skill for me.** Clone `https://github.com/Asolytics-Pro/asolytics-app-store-optimization-api` and copy its `skills/asolytics-api` folder into my agent's skills directory (`~/.claude/skills/` for Claude Code, `~/.codex/skills/` for Codex). Create the directory if it doesn't exist, then confirm it's installed.
+> **Install the Asolytics ASO skill for me.** First ask me whether I want a **global** install (in my home skills folder, available in every project) or a **project-local** install (in this project's skills folder, scoped to this repo). Then clone `https://github.com/Asolytics-Pro/asolytics-app-store-optimization-api` and copy its `skills/asolytics-api` folder into the matching directory: global → `~/.claude/skills/` (Claude Code) or `~/.codex/skills/` (Codex); project-local → `./.claude/skills/` (Claude Code) or `./.codex/skills/` (Codex). Create the directory if it doesn't exist, then confirm where it's installed.
 
-The agent will run the right commands for your setup. No terminal knowledge required.
+The agent will ask which option you want and run the right commands. No terminal knowledge required.
 
 ### Option B — Copy it yourself (terminal)
 
@@ -57,17 +66,23 @@ git clone https://github.com/Asolytics-Pro/asolytics-app-store-optimization-api.
 cd asolytics-app-store-optimization-api
 ```
 
-Then copy the skill folder for your agent:
+Then copy the skill folder to **either** a global **or** a project-local location:
 
 ```bash
-# Claude Code / Claude Desktop
+# --- Claude Code / Claude Desktop ---
+# Global (every project):
 mkdir -p ~/.claude/skills && cp -R skills/asolytics-api ~/.claude/skills/
+# Project-local (run from inside your project; commit it to share with your team):
+mkdir -p .claude/skills && cp -R skills/asolytics-api .claude/skills/
 
-# OpenAI Codex
+# --- OpenAI Codex ---
+# Global:
 mkdir -p ~/.codex/skills && cp -R skills/asolytics-api ~/.codex/skills/
+# Project-local:
+mkdir -p .codex/skills && cp -R skills/asolytics-api .codex/skills/
 ```
 
-For any other agent, copy the `skills/asolytics-api/` folder into that agent's skills directory (most agents use the same `skills/<name>/` layout).
+For any other agent, copy the `skills/asolytics-api/` folder into that agent's global or project skills directory (most agents use the same `skills/<name>/` layout).
 
 ### After installing
 
@@ -80,10 +95,13 @@ The first time, the agent will ask for your API token — paste it (or set it as
 
 The skill is versioned. When a newer version is published here on GitHub, the skill itself will **notice and offer to update** the next time you use it — just say yes. Under the hood it runs `scripts/update.sh`, which backs up your current copy and installs the latest files.
 
-You can also update manually any time:
+You can also update manually any time — run `update.sh` from wherever you installed the skill:
 
 ```bash
-bash ~/.claude/skills/asolytics-api/scripts/update.sh   # or ~/.codex/skills/...
+# global install:
+bash ~/.claude/skills/asolytics-api/scripts/update.sh      # or ~/.codex/skills/...
+# project-local install (from the project root):
+bash .claude/skills/asolytics-api/scripts/update.sh        # or .codex/skills/...
 ```
 
 ## Keeping the API reference fresh
